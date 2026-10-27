@@ -1,0 +1,9 @@
+.venv/
+.cache/
+video-work/
+outputs/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example

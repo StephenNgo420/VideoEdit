@@ -1,0 +1,17 @@
+{
+  "_note": "Optional stock API keys: use PEXELS_API_KEY / PIXABAY_API_KEY environment variables. Never commit credentials.",
+  "pexels_api_key": "",
+  "pixabay_api_key": "",
+  "brand": {
+    "name": "ANLIFE",
+    "primary": "#2563EB",
+    "primary_dark": "#1D4ED8",
+    "primary_light": "#DBEAFE",
+    "text": "#333333",
+    "muted": "#808080",
+    "logo_dark": null,
+    "logo_light": null,
+    "contact_line": "[SĐT : 0377.526.213]",
+    "presenter": "Mạnh Thành"
+  }
+}

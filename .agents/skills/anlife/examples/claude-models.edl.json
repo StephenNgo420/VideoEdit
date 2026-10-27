@@ -1,0 +1,589 @@
+{
+  "_about": "EDL mẫu của video 'Chọn đúng model Claude' (dọc 9:16, 129s). Dùng làm khuôn khi lập EDL mới. Chỉ là ví dụ bố cục, không xác nhận tính đúng của nội dung/model; cần tự cung cấp source.mp4 và transcript.",
+  "source": "source.mp4",
+  "workdir": ".",
+  "output_name": "chon-dung-model-claude",
+  "grade": "natural",
+  "skin_smooth": 0.35,
+  "face": [
+    540,
+    950
+  ],
+  "progress_bar": true,
+  "captions": {
+    "enabled": true,
+    "y": 1475,
+    "max_words": 3,
+    "max_chars": 17,
+    "exclude": [
+      [
+        0,
+        6.4
+      ]
+    ],
+    "fixes": {
+      "Haku": "Haiku",
+      "Cloth": "Claude",
+      "Opos": "Opus",
+      "lơn": "đơn",
+      "điểm": "tác",
+      "bụng": "vụ"
+    },
+    "merges": [
+      [
+        "code",
+        "bay",
+        "codebase"
+      ]
+    ],
+    "keywords": [
+      "Haiku",
+      "Sonnet",
+      "Opus",
+      "Fable",
+      "Claude",
+      "4.5",
+      "5",
+      "5.1",
+      "model",
+      "AI",
+      "Pro",
+      "VAT"
+    ]
+  },
+  "shots": [
+    [
+      0.0,
+      6.5,
+      1.0,
+      1.06
+    ],
+    [
+      6.5,
+      12.12,
+      1.14,
+      1.16
+    ],
+    [
+      12.12,
+      20.2,
+      1.0,
+      1.03
+    ],
+    [
+      25.9,
+      30.8,
+      1.12,
+      1.15
+    ],
+    [
+      39.9,
+      42.4,
+      1.0,
+      1.04
+    ],
+    [
+      50.95,
+      57.14,
+      1.0,
+      1.03
+    ],
+    [
+      57.14,
+      62.8,
+      1.12,
+      1.15
+    ],
+    [
+      64.5,
+      67.4,
+      1.0,
+      1.03
+    ],
+    [
+      72.1,
+      78.46,
+      1.12,
+      1.14
+    ],
+    [
+      78.46,
+      82.3,
+      1.0,
+      1.04
+    ],
+    [
+      88.2,
+      90.5,
+      1.14,
+      1.16
+    ],
+    [
+      98.05,
+      102.8,
+      1.0,
+      1.03
+    ],
+    [
+      104.5,
+      108.54,
+      1.12,
+      1.15
+    ],
+    [
+      108.54,
+      112.7,
+      1.0,
+      1.04
+    ],
+    [
+      112.7,
+      116.7,
+      1.12,
+      1.15
+    ],
+    [
+      120.85,
+      124.8,
+      1.0,
+      1.04
+    ],
+    [
+      124.8,
+      129.3,
+      1.12,
+      1.15
+    ]
+  ],
+  "punches": [
+    [
+      15.08,
+      1.13
+    ],
+    [
+      53.24,
+      1.12
+    ],
+    [
+      76.98,
+      1.08
+    ],
+    [
+      101.72,
+      1.13
+    ],
+    [
+      111.76,
+      1.09
+    ]
+  ],
+  "chapters": [
+    [
+      39.9,
+      62.7,
+      "01 · HAIKU 4.5"
+    ],
+    [
+      64.5,
+      82.2,
+      "02 · SONNET"
+    ],
+    [
+      88.2,
+      102.7,
+      "03 · OPUS 5"
+    ],
+    [
+      104.5,
+      116.65,
+      "04 · FABLE 5.1"
+    ]
+  ],
+  "scenes": [
+    {
+      "type": "broll",
+      "t0": 6.6,
+      "t1": 11.45,
+      "layout": "split",
+      "query": [
+        "person reading messages smartphone",
+        "hands scrolling phone comments"
+      ],
+      "headline": "Rất nhiều bạn hỏi",
+      "headline_highlight": "hỏi"
+    },
+    {
+      "type": "cards_grid",
+      "t0": 20.0,
+      "t1": 25.95,
+      "small": "Claude hiện có",
+      "title": "4 model nổi bật",
+      "highlight": "4",
+      "cards": [
+        {
+          "num": "01",
+          "name": "Haiku",
+          "ver": "4.5",
+          "tag": "Nhanh nhất",
+          "level": 1,
+          "t": 23.24
+        },
+        {
+          "num": "02",
+          "name": "Sonnet",
+          "tag": "Cân bằng",
+          "level": 2,
+          "t": 23.84
+        },
+        {
+          "num": "03",
+          "name": "Opus",
+          "ver": "5",
+          "tag": "Suy luận sâu",
+          "level": 3,
+          "t": 24.48
+        },
+        {
+          "num": "04",
+          "name": "Fable",
+          "ver": "5.1",
+          "tag": "Cực phức tạp",
+          "level": 4,
+          "t": 25.16
+        }
+      ]
+    },
+    {
+      "type": "broll",
+      "t0": 26.0,
+      "t1": 30.7,
+      "layout": "full",
+      "query": [
+        "confused man looking at laptop",
+        "thinking person computer screen"
+      ],
+      "headline": "Chưa hiểu sự khác nhau?",
+      "headline_highlight": "khác nhau"
+    },
+    {
+      "type": "rows_x",
+      "t0": 30.75,
+      "t1": 37.05,
+      "small": "Hiểu sai model dễ dẫn đến",
+      "title": "2 kiểu chọn sai",
+      "highlight": "2",
+      "rows": [
+        {
+          "title": "Model quá mạnh",
+          "sub": "cho việc đơn giản",
+          "tag": "Lãng phí",
+          "t": 31.76
+        },
+        {
+          "title": "Model quá nhẹ",
+          "sub": "cho bài toán phức tạp",
+          "tag": "Không đủ sâu",
+          "t": 34.14
+        }
+      ]
+    },
+    {
+      "type": "chapter",
+      "t0": 37.05,
+      "t1": 39.9,
+      "num": "01",
+      "name": "HAIKU 4.5",
+      "tag": "Nhanh nhất",
+      "icon": "bolt"
+    },
+    {
+      "type": "checklist",
+      "t0": 42.3,
+      "t1": 50.95,
+      "small": "Haiku 4.5 phù hợp với",
+      "title": "Việc lặp lại",
+      "highlight": "lặp lại",
+      "items": [
+        {
+          "text": "Viết email",
+          "t": 46.8
+        },
+        {
+          "text": "Tóm tắt văn bản",
+          "t": 47.52
+        },
+        {
+          "text": "Phân loại nội dung",
+          "t": 48.78
+        },
+        {
+          "text": "Chạy automation",
+          "t": 50.16
+        }
+      ]
+    },
+    {
+      "type": "chapter",
+      "t0": 62.7,
+      "t1": 64.5,
+      "num": "02",
+      "name": "SONNET",
+      "tag": "Cân bằng nhất",
+      "icon": "check_dark"
+    },
+    {
+      "type": "checklist",
+      "t0": 67.25,
+      "t1": 72.1,
+      "small": "Sonnet xử lý rất tốt",
+      "title": "Việc hằng ngày",
+      "highlight": "hằng ngày",
+      "items": [
+        {
+          "text": "Coding hằng ngày",
+          "t": 68.54
+        },
+        {
+          "text": "Viết báo cáo",
+          "t": 69.84
+        },
+        {
+          "text": "Phân tích dữ liệu",
+          "t": 70.6
+        },
+        {
+          "text": "Xử lý tài liệu",
+          "t": 71.6
+        }
+      ]
+    },
+    {
+      "type": "versus",
+      "t0": 82.2,
+      "t1": 88.2,
+      "small": "So sánh nhanh",
+      "title": "Sonnet vs Opus 5",
+      "highlight": "vs",
+      "a": {
+        "name": "SONNET",
+        "role": "Nhân sự đa năng",
+        "icon": "person",
+        "t": 83.1,
+        "t_role": 84.06
+      },
+      "b": {
+        "name": "OPUS 5",
+        "role": "Kỹ sư giải pháp",
+        "icon": "gear",
+        "t": 84.9,
+        "t_role": 86.58
+      },
+      "vs_t": 84.7
+    },
+    {
+      "type": "checklist",
+      "t0": 90.45,
+      "t1": 98.05,
+      "small": "03 · Opus 5 phù hợp với",
+      "title": "Bài toán khó",
+      "highlight": "khó",
+      "items": [
+        {
+          "text": "Suy luận sâu",
+          "t": 91.34
+        },
+        {
+          "text": "Lập kế hoạch nhiều bước",
+          "t": 92.46
+        },
+        {
+          "text": "Codebase cực kỳ phức tạp",
+          "t": 94.54
+        },
+        {
+          "text": "Quyết định kiến trúc hệ thống",
+          "t": 96.68
+        }
+      ]
+    },
+    {
+      "type": "chapter",
+      "t0": 102.7,
+      "t1": 104.5,
+      "num": "04",
+      "name": "FABLE 5.1",
+      "tag": "Cho bài toán cực khó",
+      "icon": "mountain"
+    },
+    {
+      "type": "summary",
+      "t0": 116.65,
+      "t1": 120.85,
+      "title": "Lưu lại để chọn đúng",
+      "highlight": "chọn đúng",
+      "t_rows": 117.05,
+      "rows": [
+        {
+          "name": "Haiku 4.5",
+          "desc": "Việc nhanh, lặp lại"
+        },
+        {
+          "name": "Sonnet",
+          "desc": "Công việc hằng ngày"
+        },
+        {
+          "name": "Opus 5",
+          "desc": "Suy luận sâu, code phức tạp"
+        },
+        {
+          "name": "Fable 5.1",
+          "desc": "Bài toán cực kỳ khó"
+        }
+      ],
+      "cta_text": "LƯU VIDEO NGAY",
+      "cta_t": 118.5
+    }
+  ],
+  "overlays": [
+    {
+      "type": "title_box",
+      "t0": -1,
+      "t1": 6.2,
+      "line1": "4 model Claude",
+      "highlight": "Claude",
+      "script_line": "chọn sao cho đúng?",
+      "y": 1440
+    },
+    {
+      "type": "question_card",
+      "t0": 0.3,
+      "t1": 6.2,
+      "label": "Câu hỏi từ khán giả",
+      "sub": "vừa gửi đến Mạnh Thành",
+      "text": "Mình mới tiếp cận Claude nhưng chưa hiểu hết các model của AI. Bạn phân biệt giúp mình với?"
+    },
+    {
+      "type": "meter",
+      "t0": 53.6,
+      "t1": 56.9,
+      "title": "Đánh đổi của Haiku",
+      "bars": [
+        [
+          "Tốc độ",
+          0.95,
+          "red"
+        ],
+        [
+          "Suy luận",
+          0.42,
+          "gray"
+        ]
+      ]
+    },
+    {
+      "type": "x_list",
+      "t0": 57.4,
+      "t1": 62.6,
+      "title": "Không nên dùng Haiku cho",
+      "items": [
+        [
+          "Bài toán chiến lược",
+          59.84
+        ],
+        [
+          "Codebase phức tạp",
+          61.16
+        ]
+      ]
+    },
+    {
+      "type": "meter",
+      "t0": 64.9,
+      "t1": 67.2,
+      "title": "Sonnet: cân bằng nhất",
+      "bars": [
+        [
+          "Tốc độ",
+          0.78,
+          "red"
+        ],
+        [
+          "Sức mạnh",
+          0.78,
+          "red"
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "t0": 73.3,
+      "t1": 81.9,
+      "title": "Mới dùng Claude?",
+      "prefix": "Bắt đầu với ",
+      "strong": "SONNET",
+      "strong_t": 76.76,
+      "stamp": {
+        "text": "KHUYÊN DÙNG",
+        "t": 77.4
+      }
+    },
+    {
+      "type": "callout",
+      "t0": 99.1,
+      "t1": 102.6,
+      "title": "Chỉ viết email mà dùng Opus?",
+      "strong": "→ Hơi thừa!",
+      "strong_t": 101.72
+    },
+    {
+      "type": "chips",
+      "t0": 105.9,
+      "t1": 112.6,
+      "title": "Fable 5.1 dành cho tác vụ",
+      "chips": [
+        [
+          "Khó",
+          106.28
+        ],
+        [
+          "Kéo dài",
+          106.64
+        ],
+        [
+          "Nhiều bước",
+          107.38
+        ]
+      ],
+      "note": {
+        "text": "Chỉ dùng khi bài toán ",
+        "strong": "cực kỳ phức tạp",
+        "t": 109.0
+      }
+    },
+    {
+      "type": "warning",
+      "t0": 114.1,
+      "t1": 116.6,
+      "label": "Lưu ý",
+      "text": "Dễ chạm giới hạn token"
+    },
+    {
+      "type": "cta",
+      "t0": 121.0,
+      "headline": "Claude Pro chính hãng",
+      "checks": [
+        "Hóa đơn VAT đầy đủ",
+        "Tư vấn chọn gói phù hợp"
+      ],
+      "pill": {
+        "text": "Comment & inbox dưới video",
+        "t": 127.1
+      }
+    }
+  ],
+  "music": {
+    "mode": "synth",
+    "volume": 0.14
+  },
+  "sfx_extra": []
+}
