@@ -24,6 +24,8 @@ EDL mẫu chỉ minh hoạ bố cục; thông tin về các model trong ví dụ
   nằm trong `.venv/`, không đưa vào Git.
 - OpenCV được ghim 4.12.0.88 và NumPy 2.2.6: bản OpenCV 5 được thử ban đầu thiếu
   `CascadeClassifier` mà `probe.py` dùng. Không tự nâng phiên bản nếu chưa kiểm thử.
+- PyAV được ghim `av==16.0.1`: bản 19 không còn tham số `metadata_errors`
+  mà faster-whisper 1.2.1 dùng khi đọc audio.
 - Model mặc định `large-v3-turbo` tải lần đầu từ Hugging Face, khoảng 1.6 GB.
   Model/cache không commit. Font đã có trong skill, không cần cài font hệ thống.
 - Pexels/Pixabay chỉ cần khi tự tìm stock; không cần cho render, phụ đề hoặc
@@ -66,14 +68,21 @@ video đúng. Render và audio chạy tuần tự, job shell phải dùng `set -
 
 ## Mạng, model và API key
 
-Ở lần cài này, truy cập Hugging Face bị proxy từ chối `403` (CONNECT tunnel).
-Do đó model chưa được tải và nhận dạng giọng nói chưa được kiểm thử.
-Đã lưu draft cho phép `huggingface.co`, `*.huggingface.co`, `*.hf.co`.
-Trong Environment settings: review và lưu cấu hình, rồi publish môi trường.
-Draft không tự áp dụng thay đổi mạng vào máy đang chạy.
-Khi quyền truy cập đã có, thử lại bước transcribe; không cần key Hugging Face
-cho model công khai. Nếu còn bị chặn khi tải, kiểm tra host CDN được trả về,
-không tắt TLS hoặc checksum.
+Ban đầu proxy từ chối Hugging Face với `403` (CONNECT tunnel). Khi kiểm tra lại,
+quyền mạng đã có hiệu lực: API truy cập được, model `large-v3-turbo` đã tải đầy đủ
+và nạp thành công trên CPU int8. Script `transcribe.py` đã chạy hết và tạo đủ
+`transcript.json`, `transcript.txt`, `words.txt`, `low_confidence.txt`.
+Bài thử dùng tín hiệu âm thanh giả; chỉ xác nhận pipeline chạy, không chứng minh
+độ chính xác trên lời nói thật. Whisper có thể tự sinh chữ trên tín hiệu không có
+lời nói, nên không dùng transcript của bài thử làm nội dung thật.
+
+Allowlist cần giữ trong Environment settings: `huggingface.co`, `*.huggingface.co`,
+`*.hf.co`. Các miền này đã được lưu vào draft; máy hiện tại tải model được.
+Để tái sử dụng cấu hình và snapshot ở task mới, review/lưu rồi publish môi trường.
+Chưa xác minh publication hoặc phục hồi trong task mới.
+Nếu máy mới báo 403 CONNECT, kiểm tra các miền trên có trong cấu hình đang áp dụng,
+lưu cấu hình và thử lại sau khi cập nhật runtime. Nếu file model chuyển hướng tới
+CDN khác và bị chặn, bổ sung đúng host bị từ chối; không tắt TLS hoặc checksum.
 
 Model lưu dưới `.cache/huggingface/` sau khi source activate. Nếu cache được phục hồi
 thì dùng lại; nếu không phải tải lại. Có thể truyền `--model /path/to/local/model`
@@ -120,5 +129,5 @@ face detection trên người thật. Cần video thật để kiểm tra các p
 Kết quả trong session cài đặt: smoke test đạt cả hai bản xuất; preview đã được xem
 và hiển thị dấu tiếng Việt. `pip check`, kiểm tra filter FFmpeg và chạy lại setup
 (cả qua wrapper của skill lẫn khi venv đã activate) đều đạt. Đã rà các file sẽ commit
-và xác nhận không chứa API key nhúng trong archive gốc. Transcribe và stock chưa đạt
-kiểm chứng vì các giới hạn đã ghi ở trên.
+và xác nhận không chứa API key nhúng trong archive gốc. Sau khi quyền mạng có hiệu lực và ghim PyAV 16.0.1, pipeline transcribe đã chạy
+được trên âm thanh giả. Stock vẫn chưa kiểm chứng do chưa cấu hình API key.
