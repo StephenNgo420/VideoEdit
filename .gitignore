@@ -7,6 +7,3 @@ __pycache__/
 .env
 .env.*
 !.env.example
-
-# Cloned reference repos (restore with scripts/clone_repos.sh)
-repos/*/

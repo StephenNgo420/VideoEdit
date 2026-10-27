@@ -1,14 +1,17 @@
 # Reference repos
 
-Code-driven animation and video projects kept for reference. The clones are not
-committed (about 780 MB); restore them from the repo root with:
+Code-driven animation and video projects kept for reference, added as Git
+submodules: this repo stores only a link to each upstream repo and the commit it
+points to, so it stays small. After cloning VideoEdit, fetch their contents from
+the repo root with:
 
 ```bash
 bash scripts/clone_repos.sh
 ```
 
-The script checks for Node.js 22+, git and ffmpeg, then makes shallow clones
-(`--depth 1`). HyperFrames is cloned with `GIT_LFS_SKIP_SMUDGE=1`, so its heavy
+The script checks for Node.js 22+, git and ffmpeg, then fetches each submodule
+shallowly (`--depth 1`). To move a submodule to its latest upstream commit, run
+`git submodule update --remote repos/<name>` and commit the change. HyperFrames is cloned with `GIT_LFS_SKIP_SMUDGE=1`, so its heavy
 LFS test videos are not downloaded.
 
 | Repo | What it is |

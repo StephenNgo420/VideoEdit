@@ -1,0 +1,28 @@
+[submodule "repos/PDoomVideo"]
+	path = repos/PDoomVideo
+	url = https://github.com/JohnHeibel/PDoomVideo.git
+	shallow = true
+[submodule "repos/ClaudeAnimationBase"]
+	path = repos/ClaudeAnimationBase
+	url = https://github.com/JohnHeibel/ClaudeAnimationBase.git
+	shallow = true
+[submodule "repos/claude-animation-skill"]
+	path = repos/claude-animation-skill
+	url = https://github.com/buildwithhanif/claude-animation-skill.git
+	shallow = true
+[submodule "repos/hyperframes"]
+	path = repos/hyperframes
+	url = https://github.com/heygen-com/hyperframes.git
+	shallow = true
+[submodule "repos/Battle-of-Austerlitz-Film"]
+	path = repos/Battle-of-Austerlitz-Film
+	url = https://github.com/WinterArc21/Battle-of-Austerlitz-Film.git
+	shallow = true
+[submodule "repos/awesome-ai-motion"]
+	path = repos/awesome-ai-motion
+	url = https://github.com/guanmo-ai/awesome-ai-motion.git
+	shallow = true
+[submodule "repos/awesome-opus-5-5-videos"]
+	path = repos/awesome-opus-5-5-videos
+	url = https://github.com/athemeroy/awesome-opus-5-5-videos.git
+	shallow = true
