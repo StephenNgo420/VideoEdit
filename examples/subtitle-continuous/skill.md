@@ -21,7 +21,9 @@ Giữ nguyên nội dung, khung hình và âm thanh nguồn khi chỉ được y
   Với tiếng Việt, đây là đơn vị hiển thị theo khoảng trắng, không phải tách từ ngôn ngữ học.
 - Chỉ cụm phụ đề đầu tiên theo thời gian có pop-up: 94% → 102% → 100% trong
   180 ms. Nếu lời nói bắt đầu ở giây 5, pop bắt đầu ở giây 5, không phải giây 0.
-- Tất cả cụm sau hiện/tắt trực tiếp, không pop, zoom, fade hay chuyển động.
+- Tất cả cụm sau thay trực tiếp cụm trước, không pop, zoom, fade hay chuyển động.
+- Khoảng cách giữa mọi hai cụm liên tiếp bằng **0 giây**: giữ cụm trước cho đến
+  đúng thời điểm cụm kế tiếp bắt đầu; không có frame trống, không chồng chữ.
 - Khung 1080×1920: cỡ chữ mục tiêu 68 px, viền 4 px, căn giữa ngang, đáy chữ cách
   đáy video 20% chiều cao. Scale các thông số theo chiều cao video thực tế.
   Co chữ khi dài; nếu cần xuống 2 dòng trong cùng một cụm, không tách thành cụm ngắn.
@@ -105,23 +107,34 @@ thêm từ chỉ để đủ số lượng.
 
 Ưu tiên cụm 6 từ; chọn 5 từ để giữ ý hoặc tránh đuôi quá ngắn. Không tự cắt cụm
 ngay khi gặp dấu phẩy hay hết segment Whisper nếu vẫn có thể ghép lời liên tục.
-Chọn lại các điểm chia lân cận để tránh cụm cuối 1–4 từ. Không kéo chữ qua quãng
-im lặng dài (tham khảo khoảng nghỉ >0,6 giây) hoặc ghép ý không liên quan.
+Chọn lại các điểm chia lân cận để tránh cụm cuối 1–4 từ. Không ghép nội dung
+không liên quan chỉ để đủ số từ. Khi có khoảng nghỉ giữa hai cụm, giữ nguyên
+cụm trước đến lúc cụm mới bắt đầu theo chế độ không khoảng trống bên dưới.
 Nếu một đoạn lời tự nhiên không thể chia toàn bộ thành 5–6 từ, giữ đúng lời và
 thời gian, ghi `short_reason` cho ngoại lệ 1–4 từ; báo rõ ngoại lệ khi giao file.
 Tối đa 6 từ/cụm. Không thêm chữ đệm. Chấm câu giữ nguyên khi đúng với lời nói.
 
-Thời gian không âm, end > start, không chồng nhau. Mỗi cụm bắt đầu khi từ đầu
-được nói và kết thúc gần từ cuối; có thể giữ thêm tối đa khoảng 0,15 giây nếu
-không đè cụm tiếp theo hoặc kéo qua khoảng lặng. Kiểm tra khả năng đọc.
+Thời gian không âm, end > start, không chồng nhau. Giữ start theo timestamp từ
+đầu của từng cụm; **end của cụm i = start của cụm i+1**. Cụm trước còn trên màn
+hình đến đúng lúc cụm sau thay thế, kể cả khi lời nói có khoảng nghỉ. Không đẩy
+cụm sau lên sớm, không sửa tốc độ hoặc cắt âm thanh để lấp khoảng trống.
+Cụm cuối giữ end đã rà theo lời nói. Khoảng trước cụm đầu và sau cụm cuối không
+phải khoảng cách giữa các cụm; không tự đưa chữ lên trước khi bắt đầu lời nói.
+Nếu muốn ẩn sub trong đoạn nghỉ dài hoặc chuyển cảnh, người dùng cần yêu cầu
+ngoại lệ; mặc định của skill này là liên tục từ cụm đầu đến cụm cuối.
+
+Mã xuất bên dưới tự chuẩn hoá end theo start kế tiếp, kể cả khi chunks.json đầu
+vào còn gap. ASS và SRT dùng chung ranh giới đã chuẩn hoá để khoảng cách bằng 0
+sau khi làm tròn timestamp. Kiểm tra từng frame quanh điểm chuyển, không chỉ đọc
+thời gian trong JSON.
 
 Ví dụ minh hoạ có timing chủ động (không phải kết quả Whisper):
 
 ```json
 [
-  {"start": 0.6, "end": 3.0, "text": "Hôm nay mình thử phụ đề"},
-  {"start": 3.2, "end": 5.6, "text": "Chữ trắng viền đen rõ nét"},
-  {"start": 5.8, "end": 8.2, "text": "Cụm đầu bật lên thật nhẹ"},
+  {"start": 0.6, "end": 3.2, "text": "Hôm nay mình thử phụ đề"},
+  {"start": 3.2, "end": 5.8, "text": "Chữ trắng viền đen rõ nét"},
+  {"start": 5.8, "end": 8.4, "text": "Cụm đầu bật lên thật nhẹ"},
   {"start": 8.4, "end": 10.8, "text": "Các cụm sau giữ yên"}
 ]
 ```
@@ -184,6 +197,11 @@ def build(source, font_path, width, height, output):
             raise ValueError(f'Group {i + 1}: empty or exceeds 6 words')
         c.update(start=start, end=end, text=text)
         previous_end = end
+
+    # Hold the current group until the next one starts: no blank interval.
+    # Preserve starts (speech sync) and the reviewed end of the final group.
+    for i in range(len(chunks) - 1):
+        chunks[i]['end'] = chunks[i + 1]['start']
 
     font_path = Path(font_path).resolve()
     family, face = ImageFont.truetype(str(font_path), 64).getname()
@@ -284,6 +302,9 @@ workflow chỉ thêm phụ đề này. Không thêm pop/fade cho các cụm sau.
 Trước bản đầy đủ, xuất clip hoặc ảnh preview trong cùng pipeline ASS. Kiểm tra:
 - Cụm đầu: frame đầu, giữa pop (~0,10s), sau pop (~0,20s).
 - Cụm thứ 2 trở đi: ngay frame đầu và sau 0,20s; chữ phải đứng yên, không fade.
+- Mọi cặp liên tiếp: end trước = start sau trong ASS lẫn SRT; xem frame ngay
+  trước, đúng lúc và ngay sau điểm chuyển để xác nhận không có frame trống.
+  Quét toàn đoạn từ cụm đầu đến cuối; không chồng hai cụm tại điểm chuyển.
 - Chữ trắng viền đen, đủ dấu, không nền/box/highlight/shadow, không tràn khung.
 - Mỗi cụm 5–6 từ hoặc có ngoại lệ được giải thích. Toàn cụm hiện đồng thời.
 - Đồng bộ lời nói thật khi có nguồn giọng nói; video giả không chứng minh độ chính xác ASR.

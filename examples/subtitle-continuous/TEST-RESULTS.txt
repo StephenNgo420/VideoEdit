@@ -1,0 +1,5 @@
+PASS: gapped JSON input normalized to zero gap in ASS and SRT.
+PASS: all 306 video frames from 0.6s through 10.8s show captions; no blank transition frame.
+PASS: 342 frames total, 720x1280 H.264 Baseline/AAC, full decode.
+PASS: only first caption has pop animation; all groups contain 5 or 6 words.
+Demo uses synthetic background, silent audio, manually timed captions; not an ASR accuracy test.
