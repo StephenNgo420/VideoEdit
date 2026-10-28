@@ -4,6 +4,9 @@ Repo chứa bộ skill dựng video người nói thành video dọc **9:16** ch
 Reels và Shorts: phụ đề tiếng Việt theo từ, zoom, đồ hoạ minh hoạ, B-roll,
 hiệu ứng âm thanh, nhạc nền và hai bản xuất có nhạc/không nhạc.
 
+Bản tách riêng cho **phụ đề chữ trắng viền đen, 5–6 từ/cụm, chỉ cụm đầu pop-up**:
+[skill.md và video mẫu để tải về](examples/subtitle-only/README.md).
+
 ## Bắt đầu một chat mới
 
 Bạn không cần tải lại file `.skill` hoặc tự cài thư viện bằng tay.
